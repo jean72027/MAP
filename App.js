@@ -23,8 +23,8 @@ const App = () => {
       longitude: 121.544637,
       latitude: 25.024624,
     },
-    name: "國立臺北教育大學",
-    address: "台北市和平東路二段134號",
+    name: "いなり",
+    address: "我在這裡喔!",
   });
   const [onCurrentLocation, setOnCurrentLocation] = useState(false);
   const [metro, setMetro] = useState(metroJson);
@@ -90,6 +90,20 @@ const App = () => {
         showsTraffic
         onRegionChangeComplete={onRegionChangeComplete}
       >
+         {
+            <Marker
+            coordinate={marker.coord}
+            title={marker.name}
+            description={marker.address}
+          >
+           <Image
+              source={require("./assets/inari.png")}
+              style={{ width: 35, height: 35 }}
+              resizeMode="contain"
+            />
+          </Marker>
+        }
+
         {metro.map((site) => (
           <Marker
             coordinate={{ latitude: site.latitude, longitude: site.longitude }}
@@ -98,12 +112,13 @@ const App = () => {
             description={site.address}
           >
             <Image
-              source={require("./imgs/mrt.png")}
-              style={{ width: 26, height: 28 }}
+              source={require("./assets/mrt.png")}
+              style={{ width: 26, height: 28 ,marginTop: 30}}
               resizeMode="contain"
             />
           </Marker>
         ))}
+
         {ubike.map((site) => (
           <Marker
             coordinate={{
@@ -116,11 +131,10 @@ const App = () => {
           >
 
             <Image
-              source={require("./imgs/ubikkkk.png")}
+              source={require("./assets/ubikkkk.png")}
               style={{ width: 26, height: 28 }}
               resizeMode="contain"
             />
-
           </Marker>
         ))}
       </MapView>
@@ -145,8 +159,8 @@ const App = () => {
 
 const styles = StyleSheet.create({
   ring: {
-    width: 40,
-    height: 40,
+    width: 20,
+    height: 20,
     borderRadius: 40,
     backgroundColor: "rgba(130,4,150, 0.3)",
     borderWidth: 5,
