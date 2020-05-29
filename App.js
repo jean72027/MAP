@@ -105,14 +105,15 @@ const App = () => {
           </Marker>
         ))}
         {ubike.map((site) => (
-          <Marker>
+          <Marker
             coordinate={{
               latitude: Number(site.lat),
               longitude: Number(site.lng),
             }}
             key={site.sno}
             title={`${site.sna} ${site.sbi}/${site.tot}`}
-            description={site.ar}
+            description={site.address}
+          >
 
             <Image
               source={require("./imgs/ubikkkk.png")}
